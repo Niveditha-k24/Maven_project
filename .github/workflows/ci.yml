@@ -41,7 +41,7 @@ jobs:
           name: production-ready-jar-jdk-${{ matrix.java-version }}
           path: target/*.jar
           retention-days: 5
-    deploy-production:
+  deploy-production:
     needs: build-and-validate
     runs-on: ubuntu-latest
     steps:
