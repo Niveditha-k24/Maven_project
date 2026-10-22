@@ -42,13 +42,12 @@ jobs:
           path: target/*.jar
           retention-days: 5
     deploy-production:
-      needs: build-and-validate
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout Source Code
-          uses: actions/checkout@v4
-
-        - name: Deploy to Production Environment
-          run: |
-            echo "CI tests passed. Deploying automatically..."
-            docker compose up -d --force-recreate
+    needs: build-and-validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+      - name: Deploy to Production Environment
+        run: |
+          echo "CI tests passed. Deploying automatically..."
+          docker compose up -d --force-recreate
